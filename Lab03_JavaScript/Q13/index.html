@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lab Sheet 3 - Q13</title>
+</head>
+<body>
+<script>
+  function createCounter() {
+    let count = 0;                      // private variable
+    return {
+      increment: () => ++count,
+      decrement: () => --count,
+      value: () => count
+    };
+  }
+  const c = createCounter();
+  c.increment(); c.increment(); c.decrement();
+  console.log(c.value());               // 1
+  console.log(c.count);                 // undefined (not accessible from outside)
+</script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lab Sheet 3 - Q14</title>
+</head>
+<body>
+<script>
+  function parse(str) {
+    try { const obj = JSON.parse(str); console.log("Parsed:", obj); }
+    catch (e) { console.log("Invalid JSON:", e.message); }
+    finally { console.log("Parsing attempt finished"); }
+  }
+  parse('{"name":"Amit","age":22}');   // valid
+  parse('{name: Amit}');               // invalid
+</script>
+</body>
+</html>

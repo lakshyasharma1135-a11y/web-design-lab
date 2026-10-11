@@ -1,0 +1,2 @@
+CREATE TABLE accounts (id INT PRIMARY KEY, balance DECIMAL(10,2));
+INSERT INTO accounts VALUES (1, 1000), (2, 500);

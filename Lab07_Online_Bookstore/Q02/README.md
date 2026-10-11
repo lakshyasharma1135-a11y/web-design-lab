@@ -1,0 +1,64 @@
+# Lab: Lab Sheet 7: Online Bookstore (PHP and MySQL) — Q02
+
+**Question:** Create a MySQL database schema for the bookstore with tables for books (id, title, author, price, stock, image), users, and orders.
+
+## Run / view the answer
+- Run the SQL in MySQL/MariaDB after selecting the correct database. Back up existing data first.
+
+## Expected output
+With PHP running and any required MySQL database/tables configured, the page should show the requested result (for example, a table, form, or success message). If it fails, check the database name, credentials, required shared files, and table setup.
+
+## Answer
+
+## Q2. Create a MySQL database schema for the bookstore with tables for books (id, title, author, price, stock, image), users, and orders.
+
+```sql
+CREATE DATABASE bookstore;
+USE bookstore;
+
+CREATE TABLE books (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  title VARCHAR(150) NOT NULL,
+  author VARCHAR(100) NOT NULL,
+  category VARCHAR(50),
+  price DECIMAL(8,2) NOT NULL,
+  stock INT NOT NULL DEFAULT 0,
+  image VARCHAR(100) DEFAULT 'default.jpg',
+  description TEXT
+);
+CREATE TABLE users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  email VARCHAR(100) NOT NULL UNIQUE,
+  password VARCHAR(255) NOT NULL,
+  role ENUM('customer','admin') DEFAULT 'customer'
+);
+CREATE TABLE orders (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  user_id INT NOT NULL,
+  total DECIMAL(10,2) NOT NULL,
+  address VARCHAR(255),
+  status ENUM('Pending','Shipped','Delivered') DEFAULT 'Pending',
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (user_id) REFERENCES users(id)
+);
+CREATE TABLE order_items (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  order_id INT NOT NULL, book_id INT NOT NULL, qty INT NOT NULL, price DECIMAL(8,2) NOT NULL,
+  FOREIGN KEY (order_id) REFERENCES orders(id), FOREIGN KEY (book_id) REFERENCES books(id)
+);
+CREATE TABLE reviews (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  book_id INT NOT NULL, user_id INT NOT NULL, rating TINYINT NOT NULL, comment TEXT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+CREATE TABLE wishlist (
+  user_id INT NOT NULL, book_id INT NOT NULL, PRIMARY KEY (user_id, book_id)
+);
+
+INSERT INTO books (title, author, category, price, stock, image) VALUES
+('Clean Code','Robert Martin','Technology',550,10,'clean.jpg'),
+('The Alchemist','Paulo Coelho','Fiction',299,15,'alchemist.jpg'),
+('A Brief History of Time','Stephen Hawking','Science',399,8,'time.jpg'),
+('Sapiens','Yuval Harari','History',499,12,'sapiens.jpg');
+```

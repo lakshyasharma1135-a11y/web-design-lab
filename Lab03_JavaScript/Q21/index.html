@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lab Sheet 3 - Q21</title>
+</head>
+<body>
+<script>
+  function greet(name, callback) {
+    console.log("Hello " + name);
+    callback();
+  }
+  greet("Amit", () => console.log("Callback executed"));
+
+  console.log("Start");
+  setTimeout(() => console.log("Runs after 2 seconds"), 2000);
+  console.log("End");
+  // Output order: Start, End, (after 2 sec) Runs after 2 seconds
+</script>
+</body>
+</html>

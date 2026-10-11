@@ -1,0 +1,9 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Add User</title>
+<style>body{font-family:Arial,sans-serif;max-width:500px;margin:2rem auto;padding:0 1rem}label{display:block;margin-top:1rem}input{width:100%;padding:.6rem;box-sizing:border-box}button{margin-top:1rem;padding:.6rem 1rem}</style></head>
+<body><h1>Add User</h1><p>This form submits to the Python CGI endpoint configured in Apache.</p>
+<form action="/cgi-bin/add_user.py" method="post">
+<label>Name <input name="name" required></label>
+<label>Email <input name="email" type="email" required></label>
+<label>Age <input name="age" type="number" min="1" max="120" required></label>
+<button type="submit">Add user</button></form></body></html>

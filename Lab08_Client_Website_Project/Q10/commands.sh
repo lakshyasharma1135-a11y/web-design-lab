@@ -1,0 +1,9 @@
+# Images: reduce file size (Ubuntu)
+sudo apt install -y imagemagick optipng jpegoptim webp
+mogrify -resize 1600x -quality 80 images/*.jpg
+jpegoptim --max=80 images/*.jpg
+cwebp -q 80 images/hero1.jpg -o images/hero1.webp      # WebP format
+
+# Minify CSS/JS (Node.js)
+npx csso-cli css/style.css -o css/style.min.css
+npx terser js/main.js -c -m -o js/main.min.js

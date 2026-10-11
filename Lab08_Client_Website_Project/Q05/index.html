@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Accessible Bakery Page</title>
+  <style>
+    body{font-family:Arial,sans-serif;line-height:1.6;margin:0;color:#263238}
+    a,button,input{font:inherit}
+    a:focus,button:focus,input:focus{outline:3px solid #e07a1f;outline-offset:3px}
+    header,nav,main,footer{padding:1rem}
+    header,footer{background:#56351e;color:white}
+    nav{background:#f5e8d7}
+    img{max-width:100%;height:auto}
+    .skip{position:absolute;left:-9999px}.skip:focus{left:1rem;top:1rem;background:#fff;padding:.5rem;z-index:2}
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to main content</a>
+  <header role="banner"><h1>Crumb &amp; Co.</h1><p>Freshly baked every morning</p></header>
+  <nav aria-label="Main navigation"><a href="#menu">Menu</a> · <a href="#contact">Contact</a></nav>
+  <main id="main">
+    <h2>Welcome</h2>
+    <img src="images/sample.svg" alt="Illustration of a fresh bakery product">
+    <p>Our bakery makes bread, cakes and cookies every day.</p>
+    <h2 id="menu">Popular items</h2>
+    <ul><li>Sourdough bread</li><li>Birthday cakes</li><li>Butter cookies</li></ul>
+    <label for="phone">Phone</label> <input id="phone" type="tel" autocomplete="tel">
+    <p><button type="button" aria-label="Next slide">Next slide</button></p>
+  </main>
+  <footer id="contact" role="contentinfo"><p>Crumb &amp; Co. · Roorkee</p></footer>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Book a Table — Crumb &amp; Co.</title>
+  <style>
+    body{font-family:Arial,sans-serif;max-width:560px;margin:2rem auto;padding:0 1rem}
+    label{display:block;margin-top:1rem}input,select,button{box-sizing:border-box;width:100%;padding:.7rem;margin-top:.25rem}
+    button{background:#6b3e26;color:white;border:0;border-radius:6px;cursor:pointer}
+    #bmsg{min-height:1.5rem}
+  </style>
+</head>
+<body>
+<h1>Book a Table</h1>
+<form id="bookForm" novalidate>
+  <label for="bn">Name</label><input id="bn" name="name" autocomplete="name" required>
+  <label for="be">Email</label><input id="be" name="email" type="email" autocomplete="email" required>
+  <label for="bp">Phone (10 digits)</label><input id="bp" name="phone" type="tel" inputmode="numeric" required>
+  <label for="bd">Date</label><input id="bd" name="date" type="date" required>
+  <label for="bg">Guests</label><select id="bg" name="guests"><option>1</option><option>2</option><option>4</option><option>6</option></select>
+  <button class="btn" type="submit">Reserve</button>
+  <p id="bmsg" role="alert" aria-live="polite"></p>
+</form>
+<script>
+document.getElementById("bookForm").addEventListener("submit", event => {
+  event.preventDefault();
+  const msg = document.getElementById("bmsg");
+  const name = document.getElementById("bn").value.trim();
+  const mail = document.getElementById("be").value.trim();
+  const phone = document.getElementById("bp").value.trim();
+  const date = document.getElementById("bd").value;
+  if (name.length < 2) { msg.textContent = "Please enter your name."; return; }
+  if (!/^[^@\s]+@[^@\s]+\.[a-z]{2,}$/i.test(mail)) { msg.textContent = "Enter a valid email."; return; }
+  if (!/^[0-9]{10}$/.test(phone)) { msg.textContent = "Phone must be 10 digits."; return; }
+  const chosen = new Date(date + "T00:00:00");
+  const today = new Date(); today.setHours(0,0,0,0);
+  if (!date || chosen < today) { msg.textContent = "Pick today or a future date."; return; }
+  msg.style.color = "green";
+  msg.textContent = `Thank you, ${name}. Your table request for ${document.getElementById("bg").value} guest(s) has been recorded in this demo.`;
+});
+</script>
+</body>
+</html>

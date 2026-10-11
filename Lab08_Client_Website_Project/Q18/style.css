@@ -1,0 +1,4 @@
+.tgrid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+blockquote{background:#fff;padding:16px;border-radius:8px;margin:0;box-shadow:0 2px 6px rgba(0,0,0,.1)}
+.star{font-size:2rem;cursor:pointer;color:#ccc;background:none;border:0}
+.star.on{color:#f5a623}

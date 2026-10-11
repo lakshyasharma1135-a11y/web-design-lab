@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Accessible Carousel Demo</title>
+<style>body{font-family:Arial,sans-serif;max-width:760px;margin:2rem auto;padding:0 1rem}.slide{display:none;padding:3rem;background:#f7e8d5;border-radius:10px;text-align:center}.slide.active{display:block}button{padding:.7rem 1rem;margin:.5rem;cursor:pointer}button:focus{outline:3px solid #e07a1f}</style>
+</head><body>
+<h1>Clean, commented JavaScript: Carousel Example</h1>
+<div id="slides">
+  <section class="slide active" aria-label="Slide 1"><h2>Fresh Bread</h2><p>Baked every morning.</p></section>
+  <section class="slide" aria-label="Slide 2" hidden><h2>Custom Cakes</h2><p>Made for your celebration.</p></section>
+  <section class="slide" aria-label="Slide 3" hidden><h2>Cookies</h2><p>Simple, fresh ingredients.</p></section>
+</div>
+<button id="prev" type="button">Previous</button><button id="next" type="button">Next</button>
+<p id="status" aria-live="polite">Slide 1 of 3</p><script src="script.js"></script>
+</body></html>
